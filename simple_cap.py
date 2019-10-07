@@ -13,36 +13,11 @@ import datetime
 width = 320
 height = 240
 
-def target_mog(array):
-  #array = np.zeros(3)
-  cam_array, up = array
-  mog = None
-
-  if up>0:
-    if cam_array[0]<10 and cam_array[1]>0 and cam_array[2]>0:
-      mog = 1
-    elif cam_array[0]<0 and cam_array[1]>0 and cam_array[2]>0:
-      mog = 2
-    elif cam_array[0]<0 and cam_array[1]<0 and cam_array[2]>0:
-      mog = 3
-    elif cam_array[0]<0 and cam_array[1]<0 and cam_array[2]<5:
-      mog = 4
-  else:
-    if cam_array[0]<10 and cam_array[1]>0 and cam_array[2]>0:
-      mog = 5
-    elif cam_array[0]<0 and cam_array[1]>10 and cam_array[2]>0:
-      mog = 6
-    elif cam_array[0]<0 and cam_array[1]<0 and cam_array[2]<10:
-      mog = 7
-
-  #print cam_array[0],cam_array[1],cam_array[2],up
-
-  
 def capture():
 
-  cap_1 = cv2.VideoCapture(int(sys.argv[1]))
-  cap_2 = cv2.VideoCapture(int(sys.argv[2]))
-  cap_3 = cv2.VideoCapture(int(sys.argv[3]))
+  cap_1 = cv2.VideoCapture(0)
+  cap_2 = cv2.VideoCapture(1)
+  cap_3 = cv2.VideoCapture(2)
 
   time = 0
   count_time = 0
@@ -75,9 +50,9 @@ def capture():
 
       frame = np.hstack((g_1,g_2,g_3))
       count_time = count_time + 1
-      name = "./pic/test7"+str(datetime.datetime.now()) + "-cap.png"
+      name = "./pic/"+str(datetime.datetime.now()) + "-cap.png"
       print name
-      #cv2.imwrite(name,frame)
+      cv2.imwrite(name,frame)
       #print datetime.datetime.today()
       cv2.imshow("pic",frame)
       if cv2.waitKey(1) == 27:
