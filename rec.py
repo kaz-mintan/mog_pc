@@ -5,7 +5,7 @@ import wave
 WAVE_OUTPUT_FILENAME = "sample.wav"
 iDeviceIndex = 2
 
-def MakeWavFile(FileName = "sample.wav", Record_Seconds = 2):
+def MakeWavFile(FileName = "sample.wav", Record_Seconds = 600):
   chunk = 1024
   FORMAT = pyaudio.paInt16
 
@@ -35,4 +35,4 @@ def MakeWavFile(FileName = "sample.wav", Record_Seconds = 2):
   wavFile.close()
 
 if __name__ == '__main__':
-  MakeWavFile("sample.wav", Record_Seconds = 2) 
+  MakeWavFile("sample.wav", Record_Seconds = 600) 
