@@ -1,3 +1,5 @@
 pic/*.png
 pic/
 *.pyc
+*.wav
+*.csv
