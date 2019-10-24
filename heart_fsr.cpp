@@ -12,6 +12,8 @@
 #include <time.h>
 #include <sys/time.h>
 
+#define LIMIT 180
+
 int serial_ardinoread(char *,char *);
 
 void readserial(int fairu,short meron[2]);
@@ -55,6 +57,7 @@ int serial_ardinoread(char *devicename,char *messege)
 
   struct timeval nowTime;
 	time_t timer;
+  time_t start_time;
 	struct tm *t_st = localtime(&timer);
 
   int t;
@@ -70,6 +73,9 @@ int serial_ardinoread(char *devicename,char *messege)
 
   FILE *heartfile;
   heartfile = fopen("/home/kazumi/mogura/heart_out.csv","w");
+  gettimeofday(&nowTime,NULL);
+  time(&timer);
+  time(&start_time);
 
   if(heartfile==NULL){
     printf("cannot open file\n");
@@ -79,27 +85,32 @@ int serial_ardinoread(char *devicename,char *messege)
         gettimeofday(&nowTime,NULL);
         time(&timer);
         t_st = localtime(&timer);
+        double t=difftime(timer,start_time);
 
-        len=read(fd,buf,1);
-        if(len==0)
-        {
-          continue;
-        }
-        else if(len<0)//IOエラー
-        {
-        //  printf("out\n");
-        //	exit(2);
-        }
-        else if(buf[0]=='H'){
-          readserial(fd,short_buf_a);
-          readserial(fd,short_buf_b);
-          heart= short_buf_a[0]<<8|(short_buf_a[1]&0x00ff);
-          pressure = short_buf_b[0]<<8|(short_buf_b[1]&0x00ff);
-          //meron = (short_buf[0]<<8&0x00ff)|(short_buf[1]&0x00ff);
-          //8bit shift && high 8bit mask/
-          fprintf(heartfile,"%d,%d,%d%d-%d:%d:%d.%d\n",pressure,heart,(int)t_st->tm_mon,(int)t_st->tm_mday,(int)t_st->tm_hour,(int)t_st->tm_min,(int)t_st->tm_sec,(int)nowTime.tv_usec);
-          //printf("%d,%d\n",pressure,heart);
-  //				val=meron+ringo;
+        if(t>LIMIT){
+          break;
+        }else{
+          len=read(fd,buf,1);
+          if(len==0)
+          {
+            continue;
+          }
+          else if(len<0)//IOエラー
+          {
+          //  printf("out\n");
+          //	exit(2);
+          }
+          else if(buf[0]=='H'){
+            readserial(fd,short_buf_a);
+            readserial(fd,short_buf_b);
+            heart= short_buf_a[0]<<8|(short_buf_a[1]&0x00ff);
+            pressure = short_buf_b[0]<<8|(short_buf_b[1]&0x00ff);
+            //meron = (short_buf[0]<<8&0x00ff)|(short_buf[1]&0x00ff);
+            //8bit shift && high 8bit mask/
+            fprintf(heartfile,"%d,%d,%d%d-%d:%d:%d.%d\n",pressure,heart,(int)t_st->tm_mon,(int)t_st->tm_mday,(int)t_st->tm_hour,(int)t_st->tm_min,(int)t_st->tm_sec,(int)nowTime.tv_usec);
+            //printf("%d,%d\n",pressure,heart);
+    //				val=meron+ringo;
+          }
         }
     }
   }
