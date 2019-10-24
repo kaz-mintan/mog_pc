@@ -5,7 +5,6 @@
 import sys
 import numpy as np
 import cv2
-import sys
 
 import matplotlib.pyplot as plt
 from drawnow import drawnow, figure
@@ -13,9 +12,10 @@ import datetime
 
 width = 320
 height = 240
+limit = 180
 
 
-def capture(limit):
+def capture():
 
   cap_1 = cv2.VideoCapture(0)
   cap_2 = cv2.VideoCapture(1)
@@ -67,5 +67,4 @@ def capture(limit):
           break
 
 if __name__ == '__main__':
-    args = sys.argv
-    capture(args[1])
+    capture()
