@@ -20,6 +20,7 @@ void readserial(int fairu,short meron[2]);
 	
 int main(int argc,char *argv[])
 {
+  printf("limit is %d\n",LIMIT);
 	char devicename[255];// = "/dev/ttyACM1";
   sprintf(devicename,"%s",argv[1]);
 
