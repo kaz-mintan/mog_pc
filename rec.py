@@ -5,7 +5,7 @@ import wave
 WAVE_OUTPUT_FILENAME = "/home/kazumi/mogura/sample.wav"
 iDeviceIndex = 2
 
-def MakeWavFile(FileName = "/home/kazumi/mogura/sample.wav", Record_Seconds = 120):
+def MakeWavFile(FileName = "/home/kazumi/mogura/sample.wav", Record_Seconds = 180):
   chunk = 1024
   FORMAT = pyaudio.paInt16
 
@@ -35,4 +35,4 @@ def MakeWavFile(FileName = "/home/kazumi/mogura/sample.wav", Record_Seconds = 12
   wavFile.close()
 
 if __name__ == '__main__':
-  MakeWavFile("/home/kazumi/mogura/sample.wav", Record_Seconds = 120) 
+  MakeWavFile("/home/kazumi/mogura/sample.wav", Record_Seconds = 180) 
