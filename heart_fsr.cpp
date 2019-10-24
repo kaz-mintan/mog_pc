@@ -18,13 +18,13 @@ int serial_ardinoread(char *,char *);
 
 void readserial(int fairu,short meron[2]);
 	
-int main()
+int main(int argc,char *argv[])
 {
+	char devicename[255];// = "/dev/ttyACM1";
+  sprintf(devicename,"%s",argv[1]);
 
-	char name[255],devicename[] = "/dev/ttyACM0";
-//	serial_ardinowrite(devicename,(char *)"whatyourname");
-	serial_ardinoread(devicename,name);
-	printf("name%s\n",name);
+	printf("devname%s\n",devicename);
+	serial_ardinoread(devicename,"name");
 }
 
 void readserial(int fairu,short meron[2]){

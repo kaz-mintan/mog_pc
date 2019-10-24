@@ -87,8 +87,8 @@ int serial_ardinoread(char *devicename,char *messege)
       else if(buf[0]=='H'){
         readserial(fd,short_buf_a);
         readserial(fd,short_buf_b);
-        heart= short_buf_a[0]<<8|(short_buf_a[1]&0x00ff);
-        pressure = short_buf_b[0]<<8|(short_buf_b[1]&0x00ff);
+        pressure = short_buf_a[0]<<8|(short_buf_a[1]&0x00ff);
+        heart = short_buf_b[0]<<8|(short_buf_b[1]&0x00ff);
         //meron = (short_buf[0]<<8&0x00ff)|(short_buf[1]&0x00ff);
         //8bit shift && high 8bit mask/
         printf("%d\t%d\n",pressure,heart);
