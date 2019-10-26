@@ -109,7 +109,7 @@ int serial_ardinoread(char *devicename,char *messege)
             //meron = (short_buf[0]<<8&0x00ff)|(short_buf[1]&0x00ff);
             //8bit shift && high 8bit mask/
             fprintf(heartfile,"%d,%d,%02d%02d,%02d,%02d,%02d.%02d\n",pressure,heart,(int)t_st->tm_mon,(int)t_st->tm_mday,(int)t_st->tm_hour,(int)t_st->tm_min,(int)t_st->tm_sec,(int)nowTime.tv_usec);
-            //printf("%d,%d\n",pressure,heart);
+            printf("%d,%d\n",pressure,heart);
     //				val=meron+ringo;
           }
         }
