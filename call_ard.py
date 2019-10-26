@@ -4,7 +4,7 @@ import subprocess
 #please check /dev/ttyACM0
 
 def get_hearts():
-    cmd = "sudo ./heart_fsr /dev/ttyACM1"
+    cmd = "sudo ./heart_fsr /dev/ttyACM0"
     print cmd
     subprocess.call(cmd.split())
 
