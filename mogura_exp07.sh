@@ -10,6 +10,7 @@ fi
 DIR=/home/kazumi/mogura/$1
 mkdir $DIR
 chmod a+xwr $DIR
+chmod a+xwr heart_out.csv
 
 mv $MOGUDIR/sample.wav $DIR
 mv $MOGUDIR/pic $DIR
