@@ -5,7 +5,7 @@ import subprocess
 
 def get_hearts():
     cmd = "sudo ./heart_fsr /dev/ttyACM0"
-    print cmd
+    print(cmd)
     subprocess.call(cmd.split())
 
 if __name__ == '__main__':

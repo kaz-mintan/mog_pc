@@ -13,4 +13,4 @@ if [ ! -e $DIR2 ];then
 fi
 
 echo "カメラ確認。顔の位置を確認してください。Ctrl-Cで終了。"
-python camera_test.py
+python3 camera_test.py

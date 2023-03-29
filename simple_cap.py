@@ -68,7 +68,7 @@ def capture(save_dir):
       else:
         name = save_dir+str(datetime.datetime.now()) + "-cap.png"
         #name = "/home/kazumi/mogura/pic/"+str(datetime.datetime.now()) + "-cap.png"
-        print name
+        print(name)
         frame = save_frame(frame_1,frame_2,frame_3,name)
         cv2.imshow("pic",frame)
 

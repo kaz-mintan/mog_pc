@@ -51,9 +51,7 @@ def capture():
       frame = np.hstack((g_1,g_2,g_3))
       count_time = count_time + 1
       #name = "./pic/"+str(datetime.datetime.now()) + "-cap.png"
-      #print name
       #cv2.imwrite(name,frame)
-      #print datetime.datetime.today()
       cv2.imshow("pic",frame)
       if cv2.waitKey(1) == 27:
         break
